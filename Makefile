@@ -8,10 +8,10 @@ install-vpn:
 
 generate_server_config_from_env:
 	@echo "Generating server configuration"
-	@wg genkey | tee server_privatekey | wg server_pubkey > server_publickey
+	@wg genkey | tee privatekey | wg pubkey > publickey
 	@touch server.conf
 	@echo "[Interface]" > server.conf
-	@echo "PrivateKey = `cat server_privatekey`" >> server.conf
+	@echo "PrivateKey = `cat privatekey`" >> server.conf
 	@echo "PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE " >> server.conf
 	@echo "PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE" >> server.conf
 	@echo "Address = ${ADDRESS}" >> server.conf
@@ -54,7 +54,7 @@ generate_client_config_from_env:
 	@echo "DNS = ${DNS}" >> client.conf
 	@echo "" >> client.conf
 	@echo "[Peer]" >> client.conf
-	@echo "PublicKey = `cat server_publickey`" >> client.conf
+	@echo "PublicKey = `cat publickey`" >> client.conf
 	@echo "Endpoint = ${PUBLIC_ADDRESS}:${PORT}" >> client.conf
 	@echo "AllowedIPs = 0.0.0.0/0" >> client.conf
 	@echo "PersistentKeepalive = 20" >> client.conf
