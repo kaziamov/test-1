@@ -41,7 +41,7 @@ check_status:
 	@sudo systemctl status wg-quick@wg0.service
 
 
-make-magic: install-vpn generate_server_config_from_env setup_forwarding setup_autostart
+magic: install-vpn generate_server_config_from_env setup_forwarding setup_autostart generate_client_config_from_env start_vpn
 	@echo "VPN was installed and configured"
 
 
