@@ -1,9 +1,4 @@
-ADDRESS = 10.0.0.1/24
-PORT = 51830
-
-PUBLIC_ADDRESS = 192.168.4.31
-DNS = 8.8.8.8
-
+include .env
 
 install-vpn:
 	@echo "Installing WireGuard"
