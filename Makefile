@@ -8,7 +8,7 @@ install-vpn:
 
 generate_server_config_from_env:
 	@echo "Generating server configuration"
-	@wg genkey | tee server_privatekey | wg server_pubkey > publickey
+	@wg genkey | tee server_privatekey | wg server_pubkey > server_publickey
 	@touch server.conf
 	@echo "[Interface]" > server.conf
 	@echo "PrivateKey = `cat server_privatekey`" >> server.conf
