@@ -24,9 +24,12 @@ setup_forwarding:
 	@echo "Forwarding setup updated"
 	@sudo sysctl -p
 
-setup_autostart:
+enable_autostart:
 	@sudo systemctl enable wg-quick@wg0.service
 	@echo "Autostart enabled"
+
+restart_vpn:
+	@sudo systemctl restart wg-quick@wg0.service
 
 start_vpn:
 	@sudo systemctl start wg-quick@wg0.service
