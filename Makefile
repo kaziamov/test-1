@@ -45,18 +45,6 @@ make-magic: install-vpn generate_server_config_from_env setup_forwarding setup_a
 	@echo "VPN was installed and configured"
 
 
-# Client configuration
-# [Interface]
-# PrivateKey = <CLIENT-PRIVATE-KEY> #Клиентский приватный ключ. В нашем случае katkov_privetkey.
-# Address = 10.0.0.2/32 #IP-адрес клиента, который настроен на WG сервере
-# DNS = 8.8.8.8 #DNS, который будет использовать при подключении
-
-# [Peer]
-# PublicKey = <SERVER-PUBKEY> #Публичный ключ сервера
-# Endpoint = <SERVER-IP>:51830 #IP адрес удалённого сервера и порт прослушивания
-# AllowedIPs = 0.0.0.0/0 #Если указаны все нули — весь трафик клиента будет проходить через WG сервер
-# PersistentKeepalive = 20 #Интервал проверки соединения между клиентом и сервером (сек).
-
 generate_client_config_from_env:
 	@echo "Generating client configuration"
 	# Generate client keys by name
